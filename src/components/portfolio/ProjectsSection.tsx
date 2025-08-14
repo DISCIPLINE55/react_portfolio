@@ -24,7 +24,7 @@ const projects = [
     tags: ["React", "Islamic Education", "Online Learning"],
     href: "https://ass-haabul-qur-ancom.vercel.app",
     caseStudyPath: "/projects/ass-haabul-quran",
-    image: "/src/assets/ass-haabul.png",
+    image: "/assets/ass-haabul.png",
   },
   {
     title: "Portfolio Website",

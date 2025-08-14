@@ -48,7 +48,7 @@ export default function AssHaabulQuran() {
         <section className="mb-12">
           <div className="relative rounded-2xl border overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10">
             <img
-              src="/src/assets/ass-haabul.png"
+              src="/assets/ass-haabul.png"
               alt="Ass-Haabul Qur'an Platform Preview"
               className="w-full h-64 sm:h-80 md:h-96 object-cover"
               loading="eager"
