@@ -50,8 +50,9 @@ export default function ContactSection() {
     <section id="contact" className="py-16">
       <div className="container">
         <h2 className="text-3xl font-semibold mb-8">Get in Touch</h2>
-        <div className="grid gap-10 md:grid-cols-2">
-          <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4" noValidate>
+        <div className="max-w-6xl mx-auto">
+          <div className="grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
             <input type="text" tabIndex={-1} aria-hidden="true" className="hidden" {...register("website")} />
             <div className="grid gap-2">
               <Label htmlFor="name">Your Name</Label>
@@ -80,25 +81,53 @@ export default function ContactSection() {
             </div>
           </form>
 
-          <aside className="grid gap-4">
-            <a className="flex items-center gap-2 text-sm" href="mailto:ismail.mensah.info@gmail.com">
-              <Mail className="text-primary" /> ismail.mensah.info@gmail.com
-            </a>
-            <a className="flex items-center gap-2 text-sm" href="tel:+233536478673">
-              <Phone className="text-primary" /> +233 53 647 8673
-            </a>
-            <div className="flex gap-3 pt-2">
-              <a href="https://www.linkedin.com/in/ismail-ibrahim-mensah-81a920312" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <Linkedin />
-              </a>
-              <a href="https://github.com/DISCIPLINE55" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <Github />
-              </a>
-              <a href="https://x.com/MensahIsmail" target="_blank" rel="noopener noreferrer" aria-label="Twitter/X">
-                <Twitter />
-              </a>
-            </div>
-          </aside>
+            <aside className="flex flex-col justify-center space-y-6">
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold mb-4">Contact Information</h3>
+                <a className="flex items-center gap-3 text-sm hover:text-primary transition-colors" href="mailto:ismail.mensah.info@gmail.com">
+                  <Mail className="text-primary flex-shrink-0" /> 
+                  <span>ismail.mensah.info@gmail.com</span>
+                </a>
+                <a className="flex items-center gap-3 text-sm hover:text-primary transition-colors" href="tel:+233536478673">
+                  <Phone className="text-primary flex-shrink-0" /> 
+                  <span>+233 53 647 8673</span>
+                </a>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Connect with me</h3>
+                <div className="flex gap-4">
+                  <a 
+                    href="https://www.linkedin.com/in/ismail-ibrahim-mensah-81a920312" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label="LinkedIn"
+                    className="p-2 border rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                  <a 
+                    href="https://github.com/DISCIPLINE55" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label="GitHub"
+                    className="p-2 border rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
+                  >
+                    <Github className="w-5 h-5" />
+                  </a>
+                  <a 
+                    href="https://x.com/MensahIsmail" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label="Twitter/X"
+                    className="p-2 border rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
+                  >
+                    <Twitter className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            </aside>
+          </div>
         </div>
       </div>
     </section>

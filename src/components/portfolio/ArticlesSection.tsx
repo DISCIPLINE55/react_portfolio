@@ -144,101 +144,135 @@ const postArticles = useMemo<ArticleItem[]>(
   }, []);
 
   return (
-    <section id="articles" className="py-16 animate-fade-in">
-      <div className="container">
-        <h2 className="text-3xl font-semibold mb-8">Articles & Insights</h2>
+    <section id="articles" className="py-12 sm:py-16 lg:py-20 animate-fade-in">
+      <div className="container px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold mb-3 sm:mb-4">
+              Articles & Insights
+            </h2>
+            <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
+              Thoughts, tutorials, and insights on development and design
+            </p>
+          </div>
 
-        {isLoading ? (
-          <div className="grid gap-6 md:grid-cols-2">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="rounded-xl border p-6">
-                <Skeleton className="h-5 w-2/3 mb-3" />
-                <Skeleton className="h-4 w-full mb-2" />
-                <Skeleton className="h-4 w-5/6" />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid gap-6 md:grid-cols-2">
-            {combined.map((a) => (
-              <article
-                key={a.id}
-                className="rounded-xl border overflow-hidden hover:shadow-[var(--shadow-elegant)] transition-shadow bg-card"
-              >
-                {a.imageUrl && (
-                  <AspectRatio ratio={16 / 9}>
-                    <img
-                      src={a.imageUrl}
-                      alt={`${a.title} cover image`}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </AspectRatio>
-                )}
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold leading-snug">{a.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground line-clamp-3">{a.excerpt}</p>
-                  <button
-                    className="mt-4 text-sm text-primary underline underline-offset-4 hover:text-primary/80 transition-colors story-link"
-                    onClick={() => setSelectedArticle(a)}
-                  >
-                    Read Article
-                  </button>
+          {isLoading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="rounded-2xl border p-4 sm:p-6 bg-card">
+                  <Skeleton className="h-4 sm:h-5 w-2/3 mb-2 sm:mb-3" />
+                  <Skeleton className="h-3 sm:h-4 w-full mb-1 sm:mb-2" />
+                  <Skeleton className="h-3 sm:h-4 w-5/6 mb-3 sm:mb-4" />
+                  <Skeleton className="h-8 sm:h-10 w-24 sm:w-32" />
                 </div>
-              </article>
-            ))}
-          </div>
-        )}
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+              {combined.map((a) => (
+                <article
+                  key={a.id}
+                  className="group rounded-2xl border overflow-hidden hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 bg-card hover:border-primary/30 hover:-translate-y-1 flex flex-col h-full"
+                >
+                  {a.imageUrl && (
+                    <div className="relative overflow-hidden">
+                      <AspectRatio ratio={16 / 9}>
+                        <img
+                          src={a.imageUrl}
+                          alt={`${a.title} cover image`}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </AspectRatio>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  )}
+                  <div className="p-4 sm:p-6 flex flex-col flex-grow">
+                    <h3 className="text-sm sm:text-base lg:text-lg font-semibold leading-tight mb-2 sm:mb-3 group-hover:text-primary transition-colors line-clamp-2 min-h-[2.5rem] sm:min-h-[3rem]">
+                      {a.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground line-clamp-3 leading-relaxed flex-grow mb-3 sm:mb-4 min-h-[3rem] sm:min-h-[4rem]">
+                      {a.excerpt}
+                    </p>
+                    <div className="mt-auto">
+                      <button
+                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-primary hover:text-primary/80 hover:underline transition-all group/link"
+                        onClick={() => setSelectedArticle(a)}
+                      >
+                        Read Article
+                        <svg className="w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover/link:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Modal */}
       {selectedArticle && (
         <div
-          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 animate-fade-in"
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 animate-fade-in p-4 sm:p-6 lg:p-8"
           onClick={(e) => {
             if (e.target === e.currentTarget) setSelectedArticle(null);
           }}
         >
-          <div className="bg-background p-0 rounded-lg max-w-2xl w-full relative shadow-lg transform transition-all scale-100 max-h-[80vh] overflow-y-auto border">
+          <div className="bg-background rounded-2xl max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl w-full relative shadow-2xl transform transition-all scale-100 max-h-[90vh] sm:max-h-[85vh] overflow-y-auto border">
             {/* Close Button */}
             <button
               onClick={() => setSelectedArticle(null)}
-              className="absolute top-3 right-3 text-muted-foreground hover:text-foreground text-xl"
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-background/80 backdrop-blur-sm border flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-background transition-all"
               aria-label="Close"
             >
-              &times;
+              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
             </button>
 
             {/* Cover Image */}
             {selectedArticle.imageUrl && (
-              <AspectRatio ratio={16 / 9}>
-                <img
-                  src={selectedArticle.imageUrl}
-                  alt={`${selectedArticle.title} cover image`}
-                  className="w-full h-full object-cover rounded-t-lg"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </AspectRatio>
+              <div className="relative overflow-hidden rounded-t-2xl">
+                <AspectRatio ratio={16 / 9}>
+                  <img
+                    src={selectedArticle.imageUrl}
+                    alt={`${selectedArticle.title} cover image`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </AspectRatio>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+              </div>
             )}
 
             {/* Body */}
-            <div className="p-6">
-              <h3 className="text-2xl font-bold mb-2 leading-tight">{selectedArticle.title}</h3>
-              <p className="text-sm text-muted-foreground mb-4">{selectedArticle.excerpt}</p>
-              <div className="text-foreground leading-relaxed space-y-4 text-base">
+            <div className="p-4 sm:p-6 lg:p-8">
+              <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold mb-2 sm:mb-3 lg:mb-4 leading-tight">
+                {selectedArticle.title}
+              </h3>
+              <p className="text-xs sm:text-sm lg:text-base text-muted-foreground mb-4 sm:mb-6 lg:mb-8 leading-relaxed">
+                {selectedArticle.excerpt}
+              </p>
+              <div className="text-foreground leading-relaxed space-y-3 sm:space-y-4 lg:space-y-6 text-sm sm:text-base lg:text-lg">
                 {selectedArticle.content}
               </div>
 
               {/* Full article link only for static articles */}
               {selectedArticle.kind === "static" && (
-                <div className="mt-6">
+                <div className="mt-6 sm:mt-8 lg:mt-10">
                   <a
                     href={`/articles/${selectedArticle.id}`}
-                    className="inline-block px-5 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-sm font-medium"
+                    className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all text-xs sm:text-sm lg:text-base font-medium hover:scale-105"
                   >
                     Read Full Article
+                    <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
                   </a>
                 </div>
               )}

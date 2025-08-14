@@ -1,23 +1,27 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, Moon, Sun } from "lucide-react";
+import { Menu, Moon, Sun, ChevronDown } from "lucide-react";
 import logoImage from "@/assets/logo.jpg";
 
-const links = [
+const mainLinks = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
   { href: "#services", label: "Services" },
   { href: "#projects", label: "Projects" },
   { href: "#articles", label: "Articles" },
+  { href: "#contact", label: "Contact" },
+];
+
+const portfolioLinks = [
   { href: "#testimonials", label: "Testimonials" },
   { href: "#resume", label: "Resume" },
   { href: "#certifications", label: "Certifications" },
   { href: "#education", label: "Education" },
-  { href: "#contact", label: "Contact" },
 ];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [portfolioOpen, setPortfolioOpen] = useState(false);
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
@@ -52,11 +56,35 @@ export default function Header() {
         </a>
 
         <div className="hidden lg:flex items-center gap-6">
-          {links.map((l) => (
+          {mainLinks.map((l) =>
             <a key={l.href} href={l.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors hover-scale story-link">
               {l.label}
             </a>
-          ))}
+          )}
+          {/* Portfolio dropdown */}
+          <div className="relative" onMouseLeave={() => setPortfolioOpen(false)}>
+            <button
+              className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              onMouseEnter={() => setPortfolioOpen(true)}
+              onClick={() => setPortfolioOpen(!portfolioOpen)}
+            >
+              Portfolio <ChevronDown className="h-3 w-3" />
+            </button>
+            {portfolioOpen && (
+              <div className="absolute top-full left-0 mt-1 bg-background border rounded-md shadow-lg py-2 min-w-[160px]">
+                {portfolioLinks.map((l) =>
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                    onClick={() => setPortfolioOpen(false)}
+                  >
+                    {l.label}
+                  </a>
+                )}
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="flex items-center gap-2">
@@ -70,12 +98,20 @@ export default function Header() {
       </nav>
       {open && (
         <div className="border-t lg:hidden">
-          <div className="container grid gap-2 py-3">
-            {links.map((l) => (
-              <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="px-1 py-2 rounded-md hover:bg-accent text-sm">
+          <div className="container space-y-2 py-3">
+            {mainLinks.map((l) => (
+              <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block px-1 py-2 rounded-md hover:bg-accent text-sm">
                 {l.label}
               </a>
             ))}
+            <div className="space-y-1">
+              <div className="px-1 py-2 text-sm font-medium text-muted-foreground">Portfolio</div>
+              {portfolioLinks.map((l) => (
+                <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block pl-4 pr-1 py-2 rounded-md hover:bg-accent text-sm text-muted-foreground">
+                  {l.label}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       )}

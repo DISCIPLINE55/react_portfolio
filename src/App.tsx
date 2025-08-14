@@ -6,9 +6,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Index from "./pages/Index";
 const NotFound = lazy(() => import("./pages/NotFound"));
+const Projects = lazy(() => import("./pages/Projects"));
 const VeggieGrocery = lazy(() => import("./pages/projects/VeggieGrocery"));
 const WeatherDashboard = lazy(() => import("./pages/projects/WeatherDashboard"));
 const PortfolioSite = lazy(() => import("./pages/projects/PortfolioSite"));
+const AssHaabulQuran = lazy(() => import("./pages/projects/AssHaabulQuran"));
 // Blog article pages
 const ArticleTechnology = lazy(() => import("./pages/blog/ArticleTechnology"));
 const ArticleAccessibility = lazy(() => import("./pages/blog/ArticleAccessibility"));
@@ -30,9 +32,11 @@ const App = () => (
             <Route path="/" element={<Index />} />
 
             {/* Projects */}
+            <Route path="/projects" element={<Projects />} />
             <Route path="/projects/veggie-grocery" element={<VeggieGrocery />} />
             <Route path="/projects/weather-dashboard" element={<WeatherDashboard />} />
             <Route path="/projects/portfolio-website" element={<PortfolioSite />} />
+            <Route path="/projects/ass-haabul-quran" element={<AssHaabulQuran />} />
 
             {/* Blog Articles */}
             <Route path="/articles/article-technology" element={<ArticleTechnology />} />
