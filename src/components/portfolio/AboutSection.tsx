@@ -32,6 +32,47 @@ export default function AboutSection() {
               <ul className="space-y-3 text-sm">
                 <li><strong>Location:</strong> Mankessim, Central Region, Ghana</li>
                 <li><strong>Languages:</strong> English, Twi, Arabic</li>
+                <li><strong>Email:</strong> {" "}
+                <a
+                    href="mailto:ismailmensah055@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    ismail.mensah.info@gmail.com
+                  </a>
+                </li>
+                <li><strong>Contact:</strong>{" "}
+                   <a
+                    href="tel:+233536478673"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    +233536478673
+                  </a> 
+                </li>
+                <li><strong>Whatsapp:</strong>
+                 <a
+                  href="https://wa.me/233558852609"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline ml-1"
+                 >
+                   +233558852609
+                </a>      
+                </li>
+                <li><strong>LinkedIn:</strong>{" "}
+                  <a
+                    href="https://www.linkedin.com/in/ismail-ibrahim-mensah-81a920312"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline ml-1"
+                  >
+                    ismail-ibrahim-mensah-81a920312
+                  </a>
+                </li>
+                
                 <li><strong>Portfolio:</strong>{" "}
                   <a
                     href="https://ismailmensah.vercel.app"
