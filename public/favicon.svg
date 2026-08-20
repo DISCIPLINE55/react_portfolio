@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%" fill="none" role="img" aria-label="DISCIPLINE">
+  <rect width="64" height="64" rx="16" fill="#0F0E11" />
+  <rect width="62" height="62" x="1" y="1" rx="15" stroke="#721832" stroke-width="1.5" />
+  
+  <!-- Outer D curve (Burgundy) -->
+  <path
+    d="M 24 14
+       L 36 14
+       C 48 14, 54 22, 54 32
+       C 54 42, 48 50, 36 50
+       L 24 50
+       Z"
+    fill="#721832"
+  />
+
+  <!-- D cutout (Obsidian background) -->
+  <path
+    d="M 28 22
+       L 34 22
+       C 42 22, 45 26, 45 32
+       C 45 38, 42 42, 34 42
+       L 28 42
+       Z"
+    fill="#0F0E11"
+  />
+
+  <!-- Left I Pillar (Gold) -->
+  <rect x="12" y="14" width="9" height="36" rx="2.5" fill="#D4AF37" />
+
+  <!-- Gold Accent Node -->
+  <circle cx="35" cy="32" r="3.5" fill="#D4AF37" />
+</svg>

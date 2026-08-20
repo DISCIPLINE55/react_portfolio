@@ -109,8 +109,9 @@ export default function Admin() {
       }
       await loadPosts();
       setSelected(null);
-    } catch (e: any) {
-      toast({ title: "Save failed", description: e.message, variant: "destructive" });
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : "An unexpected error occurred";
+      toast({ title: "Save failed", description: msg, variant: "destructive" });
     } finally {
       setLoading(false);
     }

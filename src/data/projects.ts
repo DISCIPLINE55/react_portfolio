@@ -1,335 +1,343 @@
-export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  fullDescription: string;
-  tags: string[];
-  category: string;
-  status: 'completed' | 'in-progress';
-  progress?: number; // For in-progress projects (0-100)
-  image: string;
-  liveUrl?: string;
-  githubUrl?: string;
-  caseStudyUrl?: string;
-  completedDate?: string;
-  startDate?: string;
-  features: string[];
-  challenges?: string[];
-  technologies: {
-    frontend: string[];
-    backend?: string[];
-    database?: string[];
-    tools: string[];
-  };
-  testimonial?: {
-    text: string;
-    author: string;
-    role: string;
-  };
+import { Project } from "@/types/project";
+import { caseStudies } from "./case-studies";
+
+export const flagshipProjects: Project[] = [
+  {
+    id: "edu-arabic",
+    slug: "edu-arabic",
+    title: "EduArabic",
+    tagline: "AI-Assisted Islamic, Arabic Learning & Quran Memorization Platform",
+    summary:
+      "A flagship, offline-first educational platform combining Arabic language acquisition, Tahfidh memorization tracking, Tajweed recitation audio review, and multi-tenant institutional administration. Built on the core governance principle: 'AI assists. Teachers decide.'",
+    category: "EdTech / AI Platform",
+    tier: "flagship",
+    status: "Active Development",
+    featured: true,
+    image: "/assets/ass-haabul.png",
+    tags: ["React / Next.js", "TypeScript", "Offline-First PWA", "Supabase", "Web Audio API", "AI Governance"],
+    role: "Lead Architect & Developer",
+    timeline: "2024 — Present",
+    highlights: [
+      "Offline-first PWA architecture with local verse audio caching and sync",
+      "Teacher-guided recitation review queue with waveform audio visualization",
+      "Responsible AI integration with strict educator sign-off governance",
+      "RTL Arabic typography with full Tashkeel diacritics support",
+    ],
+    technologies: {
+      frontend: ["React", "TypeScript", "Tailwind CSS", "Web Audio API"],
+      backend: ["Supabase", "PostgreSQL", "Row-Level Security (RLS)"],
+      tools: ["IndexedDB / Dexie", "Service Workers", "Vercel"],
+      ai: ["Audio Analysis & Phonetic Alignment APIs (Teacher-governed)"],
+    },
+    links: {
+      live: "https://ass-haabul-qur-ancom.vercel.app",
+      github: "https://github.com/DISCIPLINE55/ass-haabul-quran",
+      caseStudy: "/projects/edu-arabic",
+    },
+    hasCaseStudy: true,
+    caseStudyData: caseStudies["edu-arabic"],
+  },
+  {
+    id: "khulafasco",
+    slug: "khulafasco",
+    title: "Khulafasco Digital Platform",
+    tagline: "Institutional School Management & Digital Transformation System",
+    summary:
+      "A centralized school information platform for Al-khulafau Arashiduun Islamic Senior High School in Ghana, digitizing student bio-data, academic records, enrollment status, and administrative workflows.",
+    category: "School Management System",
+    tier: "flagship",
+    status: "Institutional Platform",
+    featured: true,
+    image: "/assets/portfolio.png",
+    tags: ["React", "TypeScript", "Supabase", "PostgreSQL", "Tailwind CSS", "TanStack Query"],
+    role: "Full-Stack Developer",
+    timeline: "2024",
+    highlights: [
+      "Digitized student registry with sub-second search and multi-criteria filtering",
+      "Secure role-based access control with PostgreSQL Row-Level Security",
+      "Eliminated paper admission bottlenecks during school enrollment periods",
+    ],
+    technologies: {
+      frontend: ["React", "TypeScript", "Tailwind CSS", "Lucide React"],
+      backend: ["Supabase", "PostgreSQL", "RLS Policies"],
+      tools: ["TanStack Query", "Zod", "Vercel"],
+    },
+    links: {
+      github: "https://github.com/DISCIPLINE55/portfolio",
+      caseStudy: "/projects/khulafasco",
+    },
+    hasCaseStudy: true,
+    caseStudyData: caseStudies["khulafasco"],
+  },
+  {
+    id: "discinet",
+    slug: "discinet",
+    title: "DisciNet",
+    tagline: "Disciplined Digital Wealth Management & Financial Habit Product Concept",
+    summary:
+      "A user-centered financial management concept focusing on structured savings goals, budget discipline (50/30/20 allocation), recurring bill tracking, and habit compliance scoring.",
+    category: "FinTech Product Concept",
+    tier: "flagship",
+    status: "Product Concept",
+    featured: true,
+    image: "/assets/task-manager.png",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Recharts", "Product Design", "HCI"],
+    role: "Product Designer & Frontend Engineer",
+    timeline: "2024",
+    highlights: [
+      "Deterministic compound interest and budget distribution computation engine",
+      "Editorial dark-mode dashboard with interactive savings velocity charts",
+      "Progressive disclosure UI minimizing financial data clutter",
+    ],
+    technologies: {
+      frontend: ["React", "TypeScript", "Tailwind CSS", "Recharts"],
+      tools: ["Vite", "Local Storage Engine"],
+    },
+    links: {
+      github: "https://github.com/DISCIPLINE55/portfolio",
+      caseStudy: "/projects/discinet",
+    },
+    hasCaseStudy: true,
+    caseStudyData: caseStudies["discinet"],
+  },
+  {
+    id: "mobile-quran-institute",
+    slug: "mobile-quran-institute",
+    title: "Mobile Quran Institute",
+    tagline: "Mobile-First Islamic Learning & Spaced Repetition Memorization App",
+    summary:
+      "A touch-optimized mobile learning application designed for on-the-go Quran recitation, spaced repetition memorization schedules, interactive verse audio looping, and offline chapter access.",
+    category: "Mobile EdTech",
+    tier: "secondary",
+    status: "Academic Prototype",
+    featured: false,
+    image: "/assets/ass-haabul.png",
+    tags: ["React Native", "Expo", "TypeScript", "Mobile HCI", "Audio API"],
+    role: "Mobile Developer & UI Designer",
+    timeline: "2024",
+    highlights: [
+      "Bottom-navigation single-handed touch accessibility architecture",
+      "Preloaded audio buffer strategy for zero-latency verse playback transitions",
+      "Spaced repetition scheduling algorithm for long-term retention",
+    ],
+    technologies: {
+      mobile: ["React Native", "Expo", "TypeScript"],
+      frontend: ["Tailwind CSS / NativeWind"],
+      tools: ["Web Audio API", "Expo AV"],
+    },
+    links: {
+      github: "https://github.com/DISCIPLINE55/ass-haabul-quran",
+      caseStudy: "/projects/mobile-quran-institute",
+    },
+    hasCaseStudy: true,
+    caseStudyData: caseStudies["mobile-quran-institute"],
+  },
+  {
+    id: "alkhulafau-enrollment",
+    slug: "alkhulafau-enrollment",
+    title: "Alkhulafau SHS Student Search & Enrollment",
+    tagline: "High-Speed Student Record Verification & Admission Utility",
+    summary:
+      "A high-speed administrative tool engineered for rapid student admission validation, index number querying, enrollment status toggling, and Ghana Education Service cohort exports.",
+    category: "Administrative Web Utility",
+    tier: "secondary",
+    status: "Institutional Platform",
+    featured: false,
+    image: "/assets/portfolio.png",
+    tags: ["React", "TypeScript", "Supabase", "Fast Indexing", "CSV Export"],
+    role: "Developer",
+    timeline: "2024",
+    highlights: [
+      "Sub-second debounced multi-criteria search filtering",
+      "Unique database constraint preventing duplicate student registrations",
+      "Print-formatted admission verification slips",
+    ],
+    technologies: {
+      frontend: ["React", "TypeScript", "Tailwind CSS"],
+      backend: ["Supabase", "PostgreSQL"],
+    },
+    links: {
+      github: "https://github.com/DISCIPLINE55/portfolio",
+      caseStudy: "/projects/alkhulafau-enrollment",
+    },
+    hasCaseStudy: true,
+    caseStudyData: caseStudies["alkhulafau-enrollment"],
+  },
+  {
+    id: "pedagolog",
+    slug: "pedagolog",
+    title: "PedagoLog",
+    tagline: "Pedagogical Reflection Log & Practicum Competency Tracker",
+    summary:
+      "A specialized digital reflection journal and competency tracking tool for teacher-trainees and educators, aligning classroom observations and lesson reflections with national teacher standards.",
+    category: "Teacher Education / EdTech",
+    tier: "secondary",
+    status: "Academic Prototype",
+    featured: false,
+    image: "/assets/task-manager.png",
+    tags: ["React", "TypeScript", "Educational HCI", "IndexedDB", "Markdown"],
+    role: "Creator & Developer",
+    timeline: "2024 — 2025",
+    highlights: [
+      "Integrated Gibbs' Reflective Cycle framework for guided reflection prompts",
+      "Offline-first auto-save journaling canvas protecting uncommitted reflections",
+      "Competency coverage visualization aligned with teacher education curricula",
+    ],
+    technologies: {
+      frontend: ["React", "TypeScript", "Tailwind CSS", "Markdown"],
+      tools: ["IndexedDB", "Vite"],
+    },
+    links: {
+      github: "https://github.com/DISCIPLINE55/portfolio",
+      caseStudy: "/projects/pedagolog",
+    },
+    hasCaseStudy: true,
+    caseStudyData: caseStudies["pedagolog"],
+  },
+];
+
+export const archivedProjects: Project[] = [
+  {
+    id: "taskmaster-pro",
+    slug: "taskmaster-pro",
+    title: "TaskMaster Pro",
+    tagline: "Advanced Task Management & Productivity Application",
+    summary:
+      "A client-side task organization tool with multi-level priority tagging, due date tracking, local storage persistence, and data export/import capabilities.",
+    category: "Productivity Tool",
+    tier: "archive",
+    status: "Archived",
+    featured: false,
+    image: "/assets/task-manager.png",
+    tags: ["JavaScript", "HTML5", "CSS3", "Local Storage API"],
+    role: "Developer",
+    timeline: "2024",
+    highlights: ["Priority filtering", "Local Storage persistence", "Data export/import"],
+    technologies: {
+      frontend: ["Vanilla JavaScript", "HTML5", "CSS3"],
+      tools: ["Local Storage API", "Vercel"],
+    },
+    links: {
+      live: "https://taskmaster-two-eta.vercel.app/",
+      github: "https://github.com/DISCIPLINE55/taskmaster-pro",
+    },
+    hasCaseStudy: false,
+  },
+  {
+    id: "age-calculator",
+    slug: "age-calculator",
+    title: "Advanced Age Calculator",
+    tagline: "Multi-Language Precision Chronological Date Utility",
+    summary:
+      "A date calculation utility with multi-language support (English and Spanish), leap year arithmetic, and printable summary exports.",
+    category: "Utility Tool",
+    tier: "archive",
+    status: "Archived",
+    featured: false,
+    image: "/assets/age-calculator.png",
+    tags: ["JavaScript", "HTML5", "CSS3", "Date Arithmetic", "i18n"],
+    role: "Developer",
+    timeline: "2024",
+    highlights: ["Leap year calculation", "Multi-language toggle", "Print CSS styling"],
+    technologies: {
+      frontend: ["Vanilla JavaScript", "HTML5", "CSS3"],
+      tools: ["Date API", "Vercel"],
+    },
+    links: {
+      live: "https://age-calculator-zeta-tawny.vercel.app/",
+      github: "https://github.com/DISCIPLINE55/age-calculator",
+    },
+    hasCaseStudy: false,
+  },
+  {
+    id: "weather-dashboard",
+    slug: "weather-dashboard",
+    title: "Weather Dashboard",
+    tagline: "Real-Time Weather & 5-Day Forecast Application",
+    summary:
+      "Real-time weather application consuming OpenWeatherMap API with geolocation detection, multi-city tracking, and responsive weather visualizations.",
+    category: "Web Application",
+    tier: "archive",
+    status: "Archived",
+    featured: false,
+    image: "/assets/weather_app.png",
+    tags: ["JavaScript", "Tailwind CSS", "OpenWeatherMap API", "Geolocation"],
+    role: "Developer",
+    timeline: "2023",
+    highlights: ["Geolocation API integration", "5-day forecast visualization"],
+    technologies: {
+      frontend: ["JavaScript", "HTML5", "Tailwind CSS"],
+      tools: ["OpenWeatherMap API", "Geolocation API"],
+    },
+    links: {
+      github: "https://github.com/DISCIPLINE55/weather-dashboard",
+    },
+    hasCaseStudy: false,
+  },
+  {
+    id: "veggie-grocery",
+    slug: "veggie-grocery",
+    title: "Veggie Grocery App",
+    tagline: "Modern E-Commerce Grocery Interface",
+    summary:
+      "Front-end grocery e-commerce catalog featuring shopping cart management, product filtering, and client-side email dispatch.",
+    category: "E-Commerce",
+    tier: "archive",
+    status: "Archived",
+    featured: false,
+    image: "/assets/veggie-banner.png",
+    tags: ["React", "Tailwind CSS", "Email.js", "Shopping Cart"],
+    role: "Developer",
+    timeline: "2023",
+    highlights: ["Interactive cart state", "Client-side order email dispatch"],
+    technologies: {
+      frontend: ["React", "Tailwind CSS", "JavaScript"],
+      tools: ["Email.js", "Vercel"],
+    },
+    links: {
+      live: "https://veggie-nine.vercel.app/",
+      github: "https://github.com/DISCIPLINE55/portfolio",
+    },
+    hasCaseStudy: false,
+  },
+  {
+    id: "efia-classic",
+    slug: "efia-classic",
+    title: "Sister Efia Classic Boutique",
+    tagline: "Fashion Catalog & Retail Showcase",
+    summary:
+      "A retail fashion showcase application with product categorizations, shopping cart workflows, and responsive aesthetics.",
+    category: "E-Commerce",
+    tier: "archive",
+    status: "Archived",
+    featured: false,
+    image: "/assets/efia-classic.png",
+    tags: ["React", "JavaScript", "CSS3", "Catalog UI"],
+    role: "Frontend Developer",
+    timeline: "2024",
+    highlights: ["Product showcase catalog", "Responsive luxury theme"],
+    technologies: {
+      frontend: ["React", "JavaScript", "CSS3"],
+      tools: ["Vercel"],
+    },
+    links: {
+      live: "https://sister-efia-classic.vercel.app/",
+      github: "https://github.com/DISCIPLINE55/sister-efia-classic",
+    },
+    hasCaseStudy: false,
+  },
+];
+
+export const allProjects: Project[] = [...flagshipProjects, ...archivedProjects];
+
+export function getProjectBySlug(slug: string): Project | undefined {
+  return allProjects.find((p) => p.slug === slug);
 }
 
-export const completedProjects: Project[] = [
-  {
-    id: 'taskmaster-pro',
-    title: 'TaskMaster Pro - Advanced To-Do List',
-    description: 'A sophisticated task management application with priority levels, due dates, and advanced filtering capabilities.',
-    fullDescription: 'TaskMaster Pro is a comprehensive task management solution designed for productivity enthusiasts and professionals. Built with modern web technologies, it features an intuitive interface for creating, organizing, and tracking tasks with multiple priority levels, due date management, and smart filtering. The application includes data persistence, export/import functionality, and a clean, distraction-free design that helps users stay focused on their goals.',
-    tags: ['JavaScript', 'HTML5', 'CSS3', 'Local Storage', 'Task Management'],
-    category: 'Productivity Tool',
-    status: 'completed',
-    image: './assets/task-manager.png',
-    liveUrl: 'https://taskmaster-two-eta.vercel.app/',
-    githubUrl: 'https://github.com/DISCIPLINE55/taskmaster-pro',
-    caseStudyUrl: '/projects/taskmaster-pro',
-    completedDate: '2024-02-10',
-    features: [
-      'Create and manage tasks with descriptions',
-      'Three priority levels (Low, Medium, High)',
-      'Due date assignment and tracking',
-      'Task status filtering (All, Active, Completed)',
-      'Task completion tracking with statistics',
-      'Data export and import functionality',
-      'Responsive design for all devices',
-      'Local storage for data persistence',
-      'Clean and intuitive user interface',
-      'Task counter and progress tracking'
-    ],
-    technologies: {
-      frontend: ['Vanilla JavaScript', 'HTML5', 'CSS3'],
-      tools: ['Local Storage API', 'Vercel', 'Responsive Design']
-    },
-    testimonial: {
-      text: 'TaskMaster Pro has completely transformed how I organize my daily tasks. The priority system and clean interface make productivity effortless.',
-      author: 'Michael Chen',
-      role: 'Project Manager'
-    }
-  },
-  {
-    id: 'age-calculator',
-    title: 'Advanced Age Calculator',
-    description: 'A comprehensive age calculation tool with multiple languages, sharing features, and precise date calculations.',
-    fullDescription: 'The Advanced Age Calculator is a user-friendly web application that provides accurate age calculations down to the exact number of years, months, and days. Built with a focus on accessibility and internationalization, it features multi-language support (English and Español), social media sharing capabilities, and the ability to save and load birthdates. The application uses precise date arithmetic to handle leap years, different month lengths, and timezone considerations for accurate results.',
-    tags: ['JavaScript', 'HTML5', 'CSS3', 'Date API', 'Internationalization'],
-    category: 'Utility Tool',
-    status: 'completed',
-    image: './assets/age-calculator.png',
-    liveUrl: 'https://age-calculator-zeta-tawny.vercel.app/',
-    githubUrl: 'https://github.com/DISCIPLINE55/age-calculator',
-    caseStudyUrl: '/projects/age-calculator',
-    completedDate: '2024-01-28',
-    features: [
-      'Precise age calculation (years, months, days)',
-      'Multi-language support (English, Spanish)',
-      'Save and load birthdate functionality',
-      'Social media sharing (Facebook, Twitter)',
-      'Print-friendly result format',
-      'Responsive design for all devices',
-      'Clean and intuitive user interface',
-      'Leap year and timezone handling',
-      'Accessibility-focused design',
-      'Real-time calculation updates'
-    ],
-    technologies: {
-      frontend: ['Vanilla JavaScript', 'HTML5', 'CSS3'],
-      tools: ['Date API', 'Local Storage', 'Print CSS', 'Vercel']
-    },
-    testimonial: {
-      text: 'Perfect for calculating exact ages for official documents. The multi-language feature is incredibly helpful for our international clients.',
-      author: 'Maria Rodriguez',
-      role: 'Administrative Assistant'
-    }
-  },
-  {
-    id: 'portfolio-website',
-    title: 'Personal Portfolio Website',
-    description: 'This responsive, animated, and accessible portfolio showcasing my work and skills.',
-    fullDescription: 'A modern, fully responsive portfolio website built with React and TypeScript, featuring smooth animations, dark mode support, and comprehensive accessibility features. Showcases projects, skills, and professional experience with an elegant, user-friendly design.',
-    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Accessibility', 'SEO'],
-    category: 'Portfolio',
-    status: 'completed',
-    image: './assets/portfolio.png',
-    liveUrl: 'https://ismailmensah.vercel.app/',
-    githubUrl: 'https://github.com/DISCIPLINE55/portfolio',
-    caseStudyUrl: '/projects/portfolio-website',
-    completedDate: '2024-02-20',
-    features: [
-      'Fully responsive design for all screen sizes',
-      'Dark/Light mode toggle',
-      'Smooth scroll animations',
-      'Contact form with email integration',
-      'SEO optimized with meta tags',
-      'Accessibility compliant (WCAG 2.1)',
-      'Performance optimized',
-      'Progressive Web App features'
-    ],
-    technologies: {
-      frontend: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-      tools: ['Vite', 'Vercel', 'ESLint', 'Prettier']
-    }
-  },
-  {
-    id: 'weather-dashboard',
-    title: 'Weather Dashboard',
-    description: 'Real-time weather application with 5-day forecast and location-based updates.',
-    fullDescription: 'A comprehensive weather dashboard that provides real-time weather information and 5-day forecasts. Features geolocation support, multiple city tracking, and a clean, intuitive interface with weather visualizations.',
-    tags: ['JavaScript', 'API', 'Tailwind CSS', 'Weather API'],
-    category: 'Web Application',
-    status: 'completed',
-    image: '/assets/weather_app.png',
-    liveUrl: '#',
-    githubUrl: 'https://github.com/DISCIPLINE55/weather-dashboard',
-    caseStudyUrl: '/projects/weather-dashboard',
-    completedDate: '2023-11-30',
-    features: [
-      'Real-time weather data integration',
-      '5-day weather forecast',
-      'Geolocation-based weather detection',
-      'Multiple city weather tracking',
-      'Weather condition visualizations',
-      'Responsive design for mobile and desktop',
-      'Local storage for saved cities'
-    ],
-    technologies: {
-      frontend: ['JavaScript', 'HTML5', 'Tailwind CSS'],
-      tools: ['OpenWeatherMap API', 'Geolocation API']
-    }
-  },
-  {
-    id: 'blog-platform',
-    title: 'Personal Blog Platform',
-    description: 'Content management system with markdown support and SEO optimization.',
-    fullDescription: 'A custom-built blog platform featuring markdown support, SEO optimization, and a clean reading experience. Includes admin panel for content management and analytics integration.',
-    tags: ['Next.js', 'MDX', 'SEO', 'CMS'],
-    category: 'Content Management',
-    status: 'completed',
-    image: 'https://images.unsplash.com/photo-1502945015378-0e284ca1a5be?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmxvZyUyMHBsYXRmb3JtfGVufDB8fDB8fHww',
-    liveUrl: 'https://blog.ismailmensah.dev',
-    githubUrl: 'https://github.com/DISCIPLINE55/blog-platform',
-    completedDate: '2024-01-05',
-    features: [
-      'Markdown and MDX support',
-      'SEO optimized blog posts',
-      'Tag and category system',
-      'Search functionality',
-      'Comments system',
-      'RSS feed generation',
-      'Reading time estimation',
-      'Social media sharing'
-    ],
-    technologies: {
-      frontend: ['Next.js', 'React', 'Tailwind CSS'],
-      tools: ['MDX', 'Next SEO', 'Vercel']
-    }
-  }
-];
+export function getFlagshipProjects(): Project[] {
+  return flagshipProjects;
+}
 
-export const inProgressProjects: Project[] = [
-  {
-    id: 'efia-classic-boutique',
-    title: 'Sister Efia Classic Boutique',
-    description: 'Luxury fashion e-commerce platform featuring premium collections, elegant design, and seamless shopping experience.',
-    fullDescription: 'Sister Efia Classic Boutique is a sophisticated e-commerce platform designed for luxury fashion retail. The website showcases premium collections including bags, watches, shoes, and accessories with an emphasis on elegance and class. Built with modern web technologies, it features a responsive design, shopping cart functionality, customer testimonials, and newsletter subscription. The platform is currently being enhanced with advanced payment processing, inventory management, and customer account features.',
-    tags: ['React', 'E-commerce', 'Luxury Fashion', 'Responsive Design', 'Shopping Cart'],
-    category: 'E-commerce',
-    status: 'in-progress',
-    progress: 80,
-    image: './assets/efia-classic.png',
-    liveUrl: 'https://sister-efia-classic.vercel.app/',
-    githubUrl: 'https://github.com/DISCIPLINE55/sister-efia-classic',
-    startDate: '2024-01-15',
-    features: [
-      'Premium product showcase with categories ✅',
-      'Responsive design for all devices ✅',
-      'Shopping cart functionality ✅',
-      'Customer testimonials section ✅',
-      'Newsletter subscription ✅',
-      'Social media integration ✅',
-      'Contact information and location ✅',
-      'Payment gateway integration 🚧',
-      'User authentication system 🚧',
-      'Order management dashboard 📝',
-      'Inventory tracking system 📝',
-      'Advanced product filtering 📝'
-    ],
-    challenges: [
-      'Implementing secure payment processing with multiple gateways',
-      'Creating an intuitive admin dashboard for inventory management',
-      'Optimizing product image loading and gallery performance',
-      'Ensuring mobile-first responsive design for luxury aesthetics'
-    ],
-    technologies: {
-      frontend: ['React', 'JavaScript', 'CSS3', 'HTML5'],
-      tools: ['Vercel', 'Responsive Design', 'Shopping Cart API']
-    },
-    testimonial: {
-      text: 'Absolutely love the quality! The handbag I ordered is stunning!',
-      author: 'Aisha M.',
-      role: 'Customer'
-    }
-  },
-  {
-    id: 'quran-memorization-platform',
-    title: "Ass-Haabul Qur'an - Quran Memorization Platform",
-    description: 'Comprehensive Islamic learning platform focused on Quran memorization, recitation, and spiritual development.',
-    fullDescription: 'Ass-Haabul Quran is a dedicated platform for Quran memorization and Islamic learning, designed to support students in their spiritual journey. The platform combines traditional Islamic education methods with modern web technology to provide an engaging and effective learning experience. It features structured memorization programs, audio recitation guides, progress tracking, and community support features. Currently in active development with core features being implemented and tested.',
-    tags: ['Islamic Education', 'Quran', 'Memorization', 'Learning Platform', 'Spiritual Development'],
-    category: 'Education',
-    status: 'in-progress',
-    progress: 65,
-    image: './assets/ass-haabul.png',
-    liveUrl: 'https://ass-haabul-qur-an.vercel.app/',
-    githubUrl: 'https://github.com/DISCIPLINE55/ass-haabul-qur-an',
-    startDate: '2024-01-10',
-    features: [
-      'Quran text display with multiple translations ✅',
-      'Audio recitation integration ✅',
-      'User progress tracking system ✅',
-      'Memorization schedule planning ✅',
-      'Islamic calendar integration 🚧',
-      'Community discussion forums 🚧',
-      'Personalized learning paths 🚧',
-      'Offline reading capability 📝',
-      'Mobile app version 📝',
-      'Advanced search and bookmarking 📝',
-      'Teacher-student interaction tools 📝',
-      'Certification system for completed sections 📝'
-    ],
-    challenges: [
-      'Implementing accurate Arabic text rendering and typography',
-      'Integrating high-quality audio recitations with text synchronization',
-      'Creating effective memorization algorithms and tracking systems',
-      'Ensuring cultural and religious sensitivity in design and functionality',
-      'Optimizing for users with varying levels of Arabic proficiency'
-    ],
-    technologies: {
-      frontend: ['React', 'JavaScript', 'CSS3', 'HTML5'],
-      tools: ['Vercel', 'Audio APIs', 'Arabic Typography', 'Progressive Web App']
-    }
-  },
-  {
-    id: 'ai-writing-assistant',
-    title: 'AI-Powered Writing Assistant',
-    description: 'Intelligent writing tool with grammar checking, style suggestions, and AI content generation.',
-    fullDescription: 'An advanced writing assistant powered by AI, providing real-time grammar checking, style suggestions, and content generation capabilities. Integrating multiple AI services to create a comprehensive writing experience.',
-    tags: ['React', 'OpenAI', 'NLP', 'AI'],
-    category: 'AI Tool',
-    status: 'in-progress',
-    progress: 30,
-    image: 'https://media.istockphoto.com/id/1495008087/photo/cute-robot-holding-a-pencil-to-write-a-message-on-paper-with-blue-background.jpg?s=1024x1024&w=is&k=20&c=HjT4haHJMpu0SGX9QyqgUww-qPTBfN8qOiOsyfhpjXo=',
-    githubUrl: 'https://github.com/DISCIPLINE55/ai-writing-assistant',
-    startDate: '2024-02-15',
-    features: [
-      'Text editor with rich formatting ✅',
-      'Basic grammar checking 🚧',
-      'AI content suggestions 🚧',
-      'Style and tone analysis 📝',
-      'Plagiarism detection 📝',
-      'Document collaboration 📝',
-      'Export to multiple formats 📝'
-    ],
-    challenges: [
-      'Integrating multiple AI APIs efficiently',
-      'Creating responsive text editor',
-      'Implementing real-time collaboration'
-    ],
-    technologies: {
-      frontend: ['React', 'TypeScript', 'Draft.js', 'Tailwind CSS'],
-      backend: ['Node.js', 'Express.js'],
-      tools: ['OpenAI API', 'Grammarly API', 'Socket.io']
-    }
-  },
-  {
-    id: 'crypto-tracker',
-    title: 'Cryptocurrency Portfolio Tracker',
-    description: 'Real-time crypto portfolio management with advanced analytics and alerts.',
-    fullDescription: 'A comprehensive cryptocurrency portfolio tracker with real-time price updates, advanced analytics, profit/loss calculations, and price alerts. Features a clean dashboard for monitoring multiple crypto assets.',
-    tags: ['React', 'Chart.js', 'Crypto API', 'Real-time'],
-    category: 'Finance',
-    status: 'in-progress',
-    progress: 60,
-    image: 'https://media.istockphoto.com/id/2181392576/photo/abstract-cryptocurrency-coin-on-smartphone-screen-crypto-payments-crypto-wallet-usb-security.jpg?s=1024x1024&w=is&k=20&c=9fUH0LUW5Ct8xAMSvTndQvMRlOUUtRQoYOtlkiscGFo=',
-    liveUrl: 'https://crypto-tracker-demo.vercel.app/',
-    githubUrl: 'https://github.com/DISCIPLINE55/crypto-tracker',
-    startDate: '2024-01-10',
-    features: [
-      'Real-time price tracking ✅',
-      'Portfolio management ✅',
-      'Interactive charts ✅',
-      'Price alerts system 🚧',
-      'News integration 🚧',
-      'Performance analytics 📝',
-      'Tax reporting tools 📝'
-    ],
-    challenges: [
-      'Handling real-time data efficiently',
-      'Creating responsive chart components',
-      'Implementing accurate P&L calculations'
-    ],
-    technologies: {
-      frontend: ['React', 'TypeScript', 'Chart.js', 'Tailwind CSS'],
-      tools: ['CoinGecko API', 'WebSocket', 'LocalStorage']
-    }
-  }
-];
-
-export const allProjects = [...completedProjects, ...inProgressProjects];
+export function getArchivedProjects(): Project[] {
+  return archivedProjects;
+}

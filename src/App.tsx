@@ -5,56 +5,57 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Index from "./pages/Index";
+
+// Lazy-loaded routes for optimal bundle splitting
+const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
+const CaseStudyPage = lazy(() => import("./pages/CaseStudyPage"));
+const ArticlesPage = lazy(() => import("./pages/ArticlesPage"));
+const ArticleDetailPage = lazy(() => import("./pages/ArticleDetailPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-const Projects = lazy(() => import("./pages/Projects"));
-const VeggieGrocery = lazy(() => import("./pages/projects/VeggieGrocery"));
-const WeatherDashboard = lazy(() => import("./pages/projects/WeatherDashboard"));
-const PortfolioSite = lazy(() => import("./pages/projects/PortfolioSite"));
-const AssHaabulQuran = lazy(() => import("./pages/projects/AssHaabulQuran"));
-// Blog article pages
-const ArticleTechnology = lazy(() => import("./pages/blog/ArticleTechnology"));
-const ArticleAccessibility = lazy(() => import("./pages/blog/ArticleAccessibility"));
-const ArticleStorytelling = lazy(() => import("./pages/blog/ArticleStorytelling"));
-const ArticleCleanCode = lazy(() => import("./pages/blog/ArticleCleanCode"));
 const Auth = lazy(() => import("./pages/Auth"));
 const Admin = lazy(() => import("./pages/Admin"));
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 60 * 1000,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Suspense fallback={<div />}>
-          <Routes>
-            <Route path="/" element={<Index />} />
+export default function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Suspense
+            fallback={
+              <div className="min-h-screen flex items-center justify-center bg-background text-muted-foreground text-sm font-mono">
+                Loading...
+              </div>
+            }
+          >
+            <Routes>
+              {/* Core Public Routes */}
+              <Route path="/" element={<Index />} />
+              <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/projects/:slug" element={<CaseStudyPage />} />
+              <Route path="/articles" element={<ArticlesPage />} />
+              <Route path="/articles/:slug" element={<ArticleDetailPage />} />
 
-            {/* Projects */}
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/projects/veggie-grocery" element={<VeggieGrocery />} />
-            <Route path="/projects/weather-dashboard" element={<WeatherDashboard />} />
-            <Route path="/projects/portfolio-website" element={<PortfolioSite />} />
-            <Route path="/projects/ass-haabul-quran" element={<AssHaabulQuran />} />
+              {/* Admin & Auth */}
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/admin" element={<Admin />} />
 
-            {/* Blog Articles */}
-            <Route path="/articles/article-technology" element={<ArticleTechnology />} />
-            <Route path="/articles/article-accessibility" element={<ArticleAccessibility />} />
-            <Route path="/articles/article-storytelling" element={<ArticleStorytelling />} />
-            <Route path="/articles/article-clean-code" element={<ArticleCleanCode />} />
-
-            {/* Auth & Admin */}
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/admin" element={<Admin />} />
-
-            {/* Catch-all */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
-
-export default App;
+              {/* 404 Catch-All */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+}

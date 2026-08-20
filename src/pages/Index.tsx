@@ -1,49 +1,41 @@
-import Header from "@/components/portfolio/Header";
-import Hero from "@/components/portfolio/HeroSection";
-import { Suspense, lazy } from "react";
-const About = lazy(() => import("@/components/portfolio/AboutSection"));
-const Skills = lazy(() => import("@/components/portfolio/SkillsSection"));
-const Services = lazy(() => import("@/components/portfolio/ServicesSection"));
-const Projects = lazy(() => import("@/components/portfolio/ProjectsSection"));
-const Articles = lazy(() => import("@/components/portfolio/ArticlesSection"));
-const Testimonials = lazy(() => import("@/components/portfolio/TestimonialsSection"));
-const Resume = lazy(() => import("@/components/portfolio/ResumeSection"));
-const Certifications = lazy(() => import("@/components/portfolio/CertificationsSection"));
-const Education = lazy(() => import("@/components/portfolio/EducationSection"));
-const CTA = lazy(() => import("@/components/portfolio/CTASection"));
-const Contact = lazy(() => import("@/components/portfolio/ContactSection"));
-const Footer = lazy(() => import("@/components/portfolio/Footer"));
 import Seo from "@/components/Seo";
+import SkipToContent from "@/components/layout/SkipToContent";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import { HeroSection } from "@/features/hero";
+import { ProjectsSection } from "@/features/projects";
+import { AboutSection } from "@/features/about";
+import { SkillsSection } from "@/features/skills";
+import { HowIBuildSection } from "@/features/how-i-build";
+import { AIJourneySection } from "@/features/ai-journey";
+import { EducationSection } from "@/features/education";
+import { ArticlesSection } from "@/features/articles";
+import { ContactSection } from "@/features/contact";
 
-const Index = () => {
+export default function Index() {
   return (
-    <div>
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Seo
-        title="Ismail Ibrahim Mensah | Frontend Developer Portfolio"
-        description="Frontend developer and UI/UX designer crafting fast, accessible web apps. Explore projects, skills, and ways to work together."
+        title="Ismail Ibrahim Mensah — Software Developer & EdTech Builder"
+        description="Software Developer and BSc IT Education student at USTED Ghana. Crafting accessible, offline-first educational platforms, full-stack applications, and exploring practical AI/ML."
+        canonical="/"
       />
-      <Header />
-      <main>
-        <Hero />
-        <Suspense fallback={<div className="container py-8 text-muted-foreground">Loading content…</div>}>
-          <About />
-          <Skills />
-          <Services />
-          <Projects />
-          <Articles />
-          <Testimonials />
-          <Resume />
-          <Certifications />
-          <Education />
-          <CTA />
-          <Contact />
-        </Suspense>
+      <SkipToContent />
+      <Navbar />
+
+      <main id="main-content" className="flex-grow">
+        <HeroSection />
+        <ProjectsSection />
+        <AboutSection />
+        <SkillsSection />
+        <HowIBuildSection />
+        <AIJourneySection />
+        <EducationSection />
+        <ArticlesSection />
+        <ContactSection />
       </main>
-      <Suspense fallback={null}>
-        <Footer />
-      </Suspense>
+
+      <Footer />
     </div>
   );
-};
-
-export default Index;
+}

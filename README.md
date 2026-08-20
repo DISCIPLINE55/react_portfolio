@@ -1,307 +1,139 @@
-# 🚀 Ismail Ibrahim Mensah - Portfolio Website
-
-A modern, responsive portfolio website built with React, TypeScript, and Supabase. Features a comprehensive content management system for blog articles, dynamic theming, and a professional showcase of skills and projects.
-
-![Portfolio Screenshot](https://via.placeholder.com/800x400?text=Portfolio+Screenshot)
-
-## ✨ Features
-
-### 🎨 Frontend Features
-- **Modern React Architecture**: Built with React 18, TypeScript, and Vite
-- **Responsive Design**: Mobile-first approach with Tailwind CSS
-- **Dark/Light Theme**: Automatic theme switching with user preference persistence
-- **Interactive UI**: Smooth animations and micro-interactions using Framer Motion
-- **Component Library**: Custom UI components built with Radix UI primitives
-- **SEO Optimized**: Dynamic meta tags, OpenGraph, and JSON-LD structured data
-- **Accessibility**: WCAG compliant with keyboard navigation and screen reader support
-
-### 🔧 Backend & CMS Features
-- **Supabase Integration**: Real-time database with Row Level Security (RLS)
-- **Authentication System**: Secure user authentication for admin panel
-- **Content Management**: Create, edit, and publish blog articles
-- **File Upload**: Image upload system for article covers
-- **Real-time Updates**: Instant content updates using React Query
-- **Security**: Input validation, XSS protection, and injection prevention
-
-### 📱 Sections
-- **Hero Section**: Dynamic introduction with call-to-action
-- **About**: Personal background and professional journey
-- **Skills**: Technical skills with visual indicators
-- **Services**: Professional services offered
-- **Projects**: Portfolio showcasing development work
-- **Articles**: Blog/article system with CMS
-- **Testimonials**: Client testimonials and reviews
-- **Resume**: Professional experience and education
-- **Certifications**: Professional certifications display
-- **Contact**: Contact form with email integration
-
-## 🛠️ Tech Stack
-
-### Frontend
-- **React 18** - Modern React with hooks and concurrent features
-- **TypeScript** - Type safety and better developer experience
-- **Vite** - Fast build tool and development server
-- **Tailwind CSS** - Utility-first CSS framework
-- **Framer Motion** - Animation library
-- **React Router** - Client-side routing
-- **React Hook Form** - Form handling with validation
-- **Zod** - Runtime type validation
-- **Lucide React** - Modern icon library
-
-### Backend & Database
-- **Supabase** - Backend-as-a-Service with PostgreSQL
-- **Row Level Security (RLS)** - Database-level security
-- **Storage** - File upload and management
-- **Real-time subscriptions** - Live data updates
-
-### UI Components
-- **Radix UI** - Headless UI components
-- **shadcn/ui** - Pre-built component system
-- **Recharts** - Charts and data visualization
-- **React Query** - Server state management
-
-## 📦 Installation
-
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn package manager
-- Supabase account (for backend functionality)
-
-### Local Development Setup
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/yourusername/portfolio.git
-cd portfolio
-```
-
-2. **Install dependencies**
-```bash
-npm install
-# or
-yarn install
-```
-
-3. **Environment Setup**
-Create a `.env.local` file in the root directory:
-```env
-VITE_SUPABASE_URL=your_supabase_project_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-```
-
-4. **Database Setup**
-Run the Supabase migrations to set up your database:
-```bash
-# Install Supabase CLI if not already installed
-npm install -g supabase
-
-# Initialize Supabase (if not already done)
-supabase init
-
-# Link to your project
-supabase link --project-ref your-project-ref
-
-# Run migrations
-supabase db push
-```
-
-5. **Start development server**
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Visit `http://localhost:5173` to see your portfolio.
-
-## 🗄️ Database Schema
-
-### Tables
-
-#### `posts`
-- `id` (uuid, primary key)
-- `author_id` (uuid, foreign key to auth.users)
-- `title` (text)
-- `slug` (text, unique)
-- `excerpt` (text, optional)
-- `content` (text, optional)
-- `cover_image_url` (text, optional)
-- `published` (boolean, default: false)
-- `created_at` (timestamp)
-- `updated_at` (timestamp)
-
-#### `user_roles`
-- `id` (uuid, primary key)
-- `user_id` (uuid, foreign key to auth.users)
-- `role` (enum: 'admin', 'moderator', 'user')
-
-### Storage Buckets
-- `article-covers` - Storage for article cover images
-
-### Security Policies
-- Public read access for published posts
-- Authenticated users can manage their own posts
-- Admin users have full access to all posts
-- File uploads restricted to authenticated users in their own folders
-
-## 🎯 Usage
-
-### Content Management
-
-#### Creating Articles
-1. Navigate to `/auth` to sign in to the admin panel
-2. Access the admin panel at `/admin`
-3. Click "New Post" to create an article
-4. Fill in title, slug, excerpt, and content
-5. Optionally upload a cover image
-6. Toggle "published" to make the article public
-7. Save the article
-
-#### Managing Content
-- **Edit**: Click "Edit" on any article in the admin panel
-- **Delete**: Click "Delete" to remove an article
-- **Publish/Unpublish**: Toggle the published status
-
-### Customization
-
-#### Adding New Sections
-1. Create a new component in `src/components/portfolio/`
-2. Import and add to the main page in `src/pages/Index.tsx`
-3. Update navigation links in `src/components/portfolio/Header.tsx`
-
-#### Styling Customization
-- Modify `tailwind.config.ts` for theme customization
-- Update CSS variables in `src/index.css`
-- Create custom components in `src/components/ui/`
-
-#### Content Updates
-- Update personal information in component files
-- Replace placeholder images in `src/assets/`
-- Modify contact information in `ContactSection.tsx`
-
-## 📁 Project Structure
-
-```
-src/
-├── components/
-│   ├── portfolio/          # Portfolio-specific components
-│   │   ├── Header.tsx      # Navigation header
-│   │   ├── Hero.tsx        # Hero section
-│   │   ├── AboutSection.tsx # About section
-│   │   ├── ContactSection.tsx # Contact form
-│   │   └── ...
-│   └── ui/                 # Reusable UI components
-│       ├── button.tsx      # Button component
-│       ├── input.tsx       # Input component
-│       └── ...
-├── pages/                  # Page components
-│   ├── Index.tsx          # Main portfolio page
-│   ├── Admin.tsx          # Admin panel
-│   ├── Auth.tsx           # Authentication page
-│   └── NotFound.tsx       # 404 page
-├── hooks/                  # Custom React hooks
-├── lib/                    # Utility functions
-├── assets/                 # Images and static files
-└── integrations/          # Third-party integrations
-    └── supabase/          # Supabase configuration
-```
-
-## 🔒 Security Features
-
-- **Input Validation**: All forms use Zod schema validation
-- **XSS Protection**: Safe content rendering and input sanitization
-- **Injection Prevention**: Template string escaping and URL validation
-- **Authentication**: Secure user authentication with Supabase
-- **Authorization**: Role-based access control with RLS policies
-- **File Security**: Scoped file uploads with proper access controls
-- **Spam Protection**: Honeypot fields in contact forms
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Add environment variables in Vercel dashboard
-4. Deploy automatically on every push
-
-### Netlify
-1. Build the project: `npm run build`
-2. Upload the `dist` folder to Netlify
-3. Configure environment variables
-4. Set up continuous deployment
-
-### Traditional Hosting
-1. Build the project: `npm run build`
-2. Upload the `dist` folder contents to your web server
-3. Configure your web server to serve the SPA properly
-
-## 🧪 Testing
-
-### Development Testing
-```bash
-npm run lint          # Run ESLint
-npm run build         # Test build process
-npm run preview       # Preview production build
-```
-
-### Security Testing
-- Input validation testing
-- XSS prevention verification  
-- Authentication flow testing
-- File upload security checks
-
-## 📈 Performance Optimization
-
-- **Code Splitting**: Automatic route-based code splitting
-- **Image Optimization**: Lazy loading and responsive images
-- **Bundle Analysis**: Use `npm run build` to analyze bundle size
-- **Caching**: Proper cache headers for static assets
-- **Database Optimization**: Efficient queries with proper indexing
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/new-feature`
-3. Make your changes and commit: `git commit -m 'Add new feature'`
-4. Push to the branch: `git push origin feature/new-feature`
-5. Submit a pull request
-
-### Development Guidelines
-- Follow TypeScript best practices
-- Use consistent naming conventions
-- Add proper error handling
-- Include JSDoc comments for complex functions
-- Test your changes thoroughly
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👤 Author
-
-**Ismail Ibrahim Mensah**
-- Email: ismail.mensah.info@gmail.com
-- Phone: +233 53 647 8673
-- LinkedIn: [Ismail Ibrahim Mensah](https://www.linkedin.com/in/ismail-ibrahim-mensah-81a920312)
-- GitHub: [DISCIPLINE55](https://github.com/DISCIPLINE55)
-- Twitter: [@MensahIsmail](https://x.com/MensahIsmail)
-
-## 🙏 Acknowledgments
-
-- [Radix UI](https://www.radix-ui.com/) for accessible UI primitives
-- [Tailwind CSS](https://tailwindcss.com/) for utility-first styling
-- [Supabase](https://supabase.com/) for backend infrastructure
-- [Lucide](https://lucide.dev/) for beautiful icons
-- [shadcn/ui](https://ui.shadcn.com/) for component system inspiration
-
-## 📚 Additional Resources
-
-- [React Documentation](https://reactjs.org/docs)
-- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [Supabase Documentation](https://supabase.com/docs)
-- [Vite Documentation](https://vitejs.dev/guide/)
+# Ismail Ibrahim Mensah — Portfolio 2.0
+**Software Developer & EdTech Builder** | **Brand:** DISCIPLINE / DISCIPLINE55  
+**Academic Background:** BSc Information Technology Education — University of Skills Training and Entrepreneurial Development (USTED), Ghana  
+**AI/ML Growth:** Next Path Ghana — AI & Machine Learning, Cohort 1 (2026)  
+**Live Site:** [https://ismailmensah.vercel.app](https://ismailmensah.vercel.app)
 
 ---
 
-⭐ **If you found this project helpful, please consider giving it a star on GitHub!**
+## 🏛️ Overview & Positioning
+
+Portfolio 2.0 is a modern, modular, accessible, and high-performance developer portfolio representing Ismail Ibrahim Mensah. It bridges software development, educational pedagogy, human-computer interaction (HCI), and emerging artificial intelligence.
+
+Rather than a generic developer template, this platform is engineered with strict separation of concerns, domain-driven types, structured data layers, and dedicated deep-dive architectural case studies.
+
+### Core Flagship Projects:
+1. **EduArabic**: AI-assisted Islamic, Arabic learning & Quran memorization (Tahfidh) platform. Architecture: Offline-first PWA, IndexedDB, Web Audio API, Supabase PostgreSQL with strict educator governance: *"AI assists. Teachers decide."*
+2. **Khulafasco Digital Platform**: Centralized school information and digital transformation system for Al-khulafau Arashiduun Islamic Senior High School, Ghana.
+3. **DisciNet**: Disciplined digital wealth management and financial habit product concept.
+4. **Mobile Quran Institute**: Touch-optimized mobile learning application with spaced repetition memorization schedules.
+5. **Alkhulafau SHS Student Search & Enrollment**: Sub-second administrative student record querying and admission validation utility.
+6. **PedagoLog**: Pedagogical reflection log and teacher-trainee practicum competency tracker.
+
+---
+
+## 🛠️ Technology Ecosystem
+
+- **Frontend:** React 18, TypeScript, Tailwind CSS, Radix UI Primitives, Lucide Icons.
+- **Backend & Data:** Supabase, PostgreSQL, Row-Level Security (RLS), RESTful APIs.
+- **Offline & Storage:** Progressive Web App (PWA), Service Workers, IndexedDB / Dexie, LocalStorage.
+- **AI & ML (Active Growth):** Python, AI API integrations, phonetic alignment pipelines, Next Path Ghana (Cohort 1 — 2026).
+- **Design & HCI:** Custom Wine/Burgundy (`#721832`) & Refined Gold (`#D4AF37`) palette, Obsidian dark surfaces, WCAG 2.1 AA keyboard accessibility, reduced-motion support.
+- **Tooling:** Vite, ESLint, TypeScript Compiler, npm, Vercel.
+
+---
+
+## 📁 Codebase Architecture
+
+```
+src/
+├── config/
+│   ├── site.ts                     # Centralized metadata, identity, verified links, heroBadges
+│   ├── navigation.ts               # Navigation items, flagship routes, page links
+│   └── seo.ts                      # Default SEO schema, OpenGraph, JSON-LD structured data builder
+│
+├── types/
+│   ├── project.ts                  # Project, CaseStudy, ArchitectureLayer, Status types
+│   ├── skill.ts                    # Categorized skill models
+│   ├── journey.ts                  # Education, Credentials, and AI/ML journey models
+│   ├── article.ts                  # Technical notes and essay types
+│   └── common.ts                   # Generic UI types and contact form payloads
+│
+├── data/
+│   ├── projects.ts                 # Flagship (6) and archived (5) project datasets
+│   ├── case-studies.ts             # In-depth architectural case studies for the 6 flagship systems
+│   ├── skills.ts                   # Categorized tech stack (Frontend, Backend, Mobile, AI/ML, HCI, Tools)
+│   ├── ai-journey.ts               # Next Path Ghana curriculum, experimentation & ethics
+│   ├── education.ts                # USTED BSc IT Education, verified credentials
+│   ├── methodology.ts              # "How I Build" engineering & HCI principles
+│   └── articles.ts                 # Technical essays and engineering insights
+│
+├── components/
+│   ├── layout/                     # Navbar, Footer, SkipToContent, Container
+│   ├── ui/                         # Radix UI / shadcn primitive wrappers
+│   ├── common/                     # SectionHeading, TechBadge, SocialLinks, ThemeToggle, ArchitectureFlow, StatCard
+│   └── Seo.tsx                     # Dynamic head & JSON-LD structured data manager
+│
+├── features/
+│   ├── hero/                       # HeroSection
+│   ├── about/                      # AboutSection
+│   ├── projects/                   # ProjectsSection, ProjectCard, ProjectGrid, ProjectSearch, ProjectFilters, ProjectArchive
+│   ├── case-studies/               # CaseStudyDetail (with bidirectional navigation & image fallbacks)
+│   ├── skills/                     # SkillsSection (grouped by engineering domain)
+│   ├── how-i-build/                # HowIBuildSection (architecture principles)
+│   ├── ai-journey/                 # AIJourneySection (Next Path Ghana)
+│   ├── education/                  # EducationSection (USTED + credentials)
+│   ├── articles/                   # ArticlesSection (with accessible preview modal)
+│   └── contact/                    # ContactSection (composed with useContactForm hook)
+│
+├── hooks/
+│   ├── useContactForm.ts           # Contact form state, Zod validation, sanitization, mailto dispatch
+│   ├── useReducedMotion.ts         # prefers-reduced-motion accessibility hook
+│   ├── useIntersectionObserver.ts  # Viewport scroll-reveal observer hook
+│   ├── useMediaQuery.ts            # Viewport media query matcher with semantic breakpoints
+│   ├── useScrollProgress.ts        # Vertical scroll depth tracker (0–100%)
+│   ├── use-mobile.tsx              # Mobile breakpoint detection
+│   └── use-toast.ts                # Toast notification system
+│
+├── lib/
+│   ├── utils.ts                    # cn() helper
+│   ├── analytics.ts                # Plausible-compatible custom event tracker
+│   └── validation.ts               # Shared validation utilities (email, url, sanitize, clamp)
+│
+├── pages/
+│   ├── Index.tsx                   # Curated Homepage narrative flow
+│   ├── ProjectsPage.tsx            # All projects directory with category filter and search
+│   ├── CaseStudyPage.tsx           # Dynamic case study route (/projects/:slug)
+│   ├── ArticlesPage.tsx            # Technical notes index (/articles)
+│   ├── ArticleDetailPage.tsx       # Dedicated reading route (/articles/:slug)
+│   ├── NotFound.tsx                # 404 handler
+│   ├── Admin.tsx                   # Supabase CMS manager
+│   └── Auth.tsx                    # Authentication
+│
+├── App.tsx                         # Central router & query provider (lazy loaded)
+├── main.tsx                        # Application entry point
+└── index.css                       # Semantic CSS variables & design tokens
+```
+
+---
+
+## ⚡ Quick Start & Development
+
+### 1. Clone & Install
+```bash
+git clone https://github.com/DISCIPLINE55/portfolio.git
+cd portfolio
+npm install
+```
+
+### 2. Run Local Development Server
+```bash
+npm run dev
+```
+
+### 3. Verify Code Quality & Build
+```bash
+npx tsc --noEmit   # Type check (strict)
+npm run lint       # ESLint check
+npm run build      # Production bundle & PWA service worker generation
+```
+
+---
+
+## 📖 Maintenance Guide
+
+- **Add a Project**: Add entry to `src/data/projects.ts` (and `src/data/case-studies.ts` if flagship).
+- **Add an Article**: Add entry to `src/data/articles.ts`.
+- **Update Skills**: Modify entries in `src/data/skills.ts`.
+- **Update Identity / Contacts**: Modify `src/config/site.ts`.
+- **Update Navigation**: Modify `src/config/navigation.ts`.

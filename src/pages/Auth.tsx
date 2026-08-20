@@ -63,8 +63,9 @@ const handleAuth = async () => {
       toast({ title: "Welcome back", description: "You are now signed in." });
       navigate("/admin", { replace: true });
     }
-  } catch (e: any) {
-    toast({ title: "Authentication error", description: e.message, variant: "destructive" });
+  } catch (e: unknown) {
+    const msg = e instanceof Error ? e.message : "Authentication error occurred";
+    toast({ title: "Authentication error", description: msg, variant: "destructive" });
   } finally {
     setLoading(false);
   }
@@ -82,8 +83,9 @@ const handleForgotPassword = async () => {
     const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo });
     if (error) throw error;
     toast({ title: "Password reset sent", description: "Check your email for reset instructions." });
-  } catch (e: any) {
-    toast({ title: "Reset error", description: e.message, variant: "destructive" });
+  } catch (e: unknown) {
+    const msg = e instanceof Error ? e.message : "Reset error occurred";
+    toast({ title: "Reset error", description: msg, variant: "destructive" });
   }
 };
 
@@ -106,8 +108,9 @@ const handlePasswordUpdate = async () => {
     setPassword("");
     setNewPassword("");
     setConfirmPassword("");
-  } catch (e: any) {
-    toast({ title: "Update error", description: e.message, variant: "destructive" });
+  } catch (e: unknown) {
+    const msg = e instanceof Error ? e.message : "Update error occurred";
+    toast({ title: "Update error", description: msg, variant: "destructive" });
   } finally {
     setLoading(false);
   }

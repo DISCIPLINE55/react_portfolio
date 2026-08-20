@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%" fill="none" role="img" aria-label="DISCIPLINE Logo">
+  <defs>
+    <!-- Obsidian Canvas Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18151D"/>
+      <stop offset="50%" stop-color="#0F0E11"/>
+      <stop offset="100%" stop-color="#070608"/>
+    </linearGradient>
+
+    <!-- Deep Burgundy Brand Gradient -->
+    <linearGradient id="wineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8F2342"/>
+      <stop offset="50%" stop-color="#721832"/>
+      <stop offset="100%" stop-color="#581124"/>
+    </linearGradient>
+
+    <!-- Refined Gold Accent Gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5D77F"/>
+      <stop offset="45%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#A6831E"/>
+    </linearGradient>
+
+    <!-- Inner Glow / Rim Highlight -->
+    <linearGradient id="rimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.4"/>
+      <stop offset="40%" stop-color="#721832" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.6"/>
+    </linearGradient>
+
+    <filter id="subtleShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Base Squircle Container -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)"/>
+  <rect width="504" height="504" x="4" y="4" rx="124" stroke="url(#rimGrad)" stroke-width="3" fill="none"/>
+
+  <!-- Monogram Mark: D + I Geometric Intersection -->
+  <g filter="url(#subtleShadow)">
+    <!-- Outer "D" Wing (Burgundy Arc) -->
+    <path
+      d="M 196 112
+         L 284 112
+         C 376 112, 432 176, 432 256
+         C 432 336, 376 400, 284 400
+         L 196 400
+         Z"
+      fill="url(#wineGrad)"
+    />
+
+    <!-- Inner "D" Counter (Negative Cutout) -->
+    <path
+      d="M 232 168
+         L 278 168
+         C 334 168, 372 206, 372 256
+         C 372 306, 334 344, 278 344
+         L 232 344
+         Z"
+      fill="#0F0E11"
+    />
+
+    <!-- Left Architectural Pillar ("I" for Ismail / Integrity - Refined Gold) -->
+    <path
+      d="M 120 120
+         C 120 115.58, 123.58 112, 128 112
+         L 176 112
+         C 180.42 112, 184 115.58, 184 120
+         L 184 392
+         C 184 396.42, 180.42 400, 176 400
+         L 128 400
+         C 123.58 400, 120 396.42, 120 392
+         Z"
+      fill="url(#goldGrad)"
+    />
+
+    <!-- Central Gold Focal Node / Discipline Dot Accent -->
+    <circle cx="282" cy="256" r="22" fill="url(#goldGrad)" />
+    <circle cx="282" cy="256" r="10" fill="#0F0E11" />
+
+    <!-- Top & Bottom Connection Brackets -->
+    <path d="M 184 148 L 232 148 L 232 188 L 184 188 Z" fill="url(#goldGrad)" opacity="0.9" />
+    <path d="M 184 324 L 232 324 L 232 364 L 184 364 Z" fill="url(#goldGrad)" opacity="0.9" />
+  </g>
+</svg>

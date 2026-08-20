@@ -2,97 +2,93 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    /* Brand colors (HSL) */
-    --background: 0 0% 100%;
-    --foreground: 230 35% 10%;
+    /* Light Theme: Warm Alabaster canvas, deep wine accents, refined gold highlights */
+    --background: 40 20% 98%;
+    --foreground: 240 10% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 230 35% 10%;
+    --card-foreground: 240 10% 12%;
+    --card-subtle: 40 15% 95%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 230 35% 10%;
+    --popover-foreground: 240 10% 12%;
 
-    /* Brand primary: vibrant orange */
-    --primary: 28 95% 50%;
-    --primary-foreground: 0 0% 100%;
+    /* Brand Primary: Wine / Burgundy */
+    --primary: 348 65% 28%;
+    --primary-foreground: 40 20% 98%;
+    --primary-hover: 348 65% 22%;
 
-    --secondary: 220 22% 95%;
-    --secondary-foreground: 230 35% 15%;
+    --secondary: 40 15% 93%;
+    --secondary-foreground: 348 65% 24%;
 
-    --muted: 220 22% 96%;
-    --muted-foreground: 219 15% 46%;
+    --muted: 40 10% 92%;
+    --muted-foreground: 240 5% 42%;
 
-    --accent: 28 95% 96%;
-    --accent-foreground: 28 95% 25%;
+    --accent: 348 45% 94%;
+    --accent-foreground: 348 65% 24%;
 
-    --destructive: 0 84% 60%;
+    /* Gold Tokens */
+    --gold: 42 68% 48%;
+    --gold-foreground: 0 0% 100%;
+    --wine: 348 65% 28%;
+
+    --destructive: 0 75% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 216 20% 90%;
-    --input: 216 20% 90%;
-    --ring: 28 95% 45%;
+    --border: 40 12% 88%;
+    --input: 40 12% 88%;
+    --ring: 348 65% 35%;
 
     --radius: 0.75rem;
 
-    /* Sidebar */
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 230 20% 22%;
-    --sidebar-primary: 28 95% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 28 95% 96%;
-    --sidebar-accent-foreground: 28 95% 25%;
-    --sidebar-border: 216 20% 90%;
-    --sidebar-ring: 28 95% 45%;
-
-    /* Elevation & motion */
-    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.25);
-    --shadow-glow: 0 8px 24px hsl(var(--primary) / 0.35);
-    --transition-smooth: all 200ms cubic-bezier(0.22, 1, 0.36, 1);
+    --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-card: 0 4px 16px -2px rgba(114, 24, 50, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+    --shadow-elevated: 0 12px 32px -4px rgba(114, 24, 50, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.06);
   }
 
   .dark {
-    --background: 230 35% 6%;
-    --foreground: 0 0% 100%;
+    /* Dark Theme: Deep Obsidian surfaces, rich wine brand depth, luminous refined gold accents */
+    --background: 250 8% 6%;
+    --foreground: 40 20% 95%;
 
-    --card: 230 35% 8%;
-    --card-foreground: 0 0% 100%;
+    --card: 250 8% 9%;
+    --card-foreground: 40 20% 95%;
+    --card-subtle: 250 8% 12%;
 
-    --popover: 230 35% 8%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 250 8% 9%;
+    --popover-foreground: 40 20% 95%;
 
-    --primary: 28 95% 55%;
+    /* Brand Primary: Deep Wine / Luminous Burgundy */
+    --primary: 348 58% 46%;
     --primary-foreground: 0 0% 100%;
+    --primary-hover: 348 58% 52%;
 
-    --secondary: 230 20% 14%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 250 8% 14%;
+    --secondary-foreground: 40 20% 95%;
 
-    --muted: 230 20% 14%;
-    --muted-foreground: 220 12% 70%;
+    --muted: 250 8% 13%;
+    --muted-foreground: 240 6% 65%;
 
-    --accent: 28 95% 18%;
-    --accent-foreground: 28 95% 92%;
+    --accent: 348 50% 16%;
+    --accent-foreground: 40 20% 95%;
 
-    --destructive: 0 62% 40%;
+    /* Gold Tokens */
+    --gold: 42 75% 58%;
+    --gold-foreground: 250 8% 6%;
+    --wine: 348 58% 46%;
+
+    --destructive: 0 65% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 230 20% 16%;
-    --input: 230 20% 16%;
-    --ring: 28 95% 55%;
+    --border: 250 8% 16%;
+    --input: 250 8% 16%;
+    --ring: 42 75% 58%;
 
-    --sidebar-background: 230 20% 10%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 28 95% 55%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 230 20% 14%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 230 20% 14%;
-    --sidebar-ring: 28 95% 55%;
+    --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.4);
+    --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.04);
+    --shadow-elevated: 0 12px 36px -4px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(212, 175, 55, 0.15);
   }
 }
 
@@ -101,18 +97,47 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground antialiased;
-    font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  html {
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
-  html { scroll-behavior: smooth; }
 
-  /* Improve touch interactions on mobile */
-  html { -webkit-tap-highlight-color: transparent; }
-  a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  body {
+    @apply bg-background text-foreground antialiased min-h-screen selection:bg-primary/20 selection:text-foreground;
+    font-family: 'Plus Jakarta Sans', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
 
+  /* Accessibility: skip link and focus visible */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Section scroll margins for fixed headers */
   section[id] {
-    scroll-margin-top: 6rem;
+    scroll-margin-top: 5.5rem;
   }
+
+  /* Respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Custom editorial styles */
+.badge-gold {
+  @apply bg-gold/15 text-gold dark:text-gold-light border border-gold/30 font-medium;
+}
+
+.badge-wine {
+  @apply bg-wine/10 text-primary dark:text-wine-light border border-primary/20 font-medium;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:border-primary/40 hover:-translate-y-0.5 hover:shadow-lg;
 }
